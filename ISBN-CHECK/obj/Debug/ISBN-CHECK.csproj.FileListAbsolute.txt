@@ -1,0 +1,7 @@
+C:\Users\Igor.Firsov\source\repos\ISBN-CHECK\ISBN-CHECK\obj\Debug\ISBN-CHECK.csprojAssemblyReference.cache
+C:\Users\Igor.Firsov\source\repos\ISBN-CHECK\ISBN-CHECK\obj\Debug\ISBN-CHECK.csproj.CoreCompileInputs.cache
+C:\Users\Igor.Firsov\source\repos\ISBN-CHECK\ISBN-CHECK\bin\Debug\ISBN-CHECK.exe.config
+C:\Users\Igor.Firsov\source\repos\ISBN-CHECK\ISBN-CHECK\bin\Debug\ISBN-CHECK.exe
+C:\Users\Igor.Firsov\source\repos\ISBN-CHECK\ISBN-CHECK\bin\Debug\ISBN-CHECK.pdb
+C:\Users\Igor.Firsov\source\repos\ISBN-CHECK\ISBN-CHECK\obj\Debug\ISBN-CHECK.exe
+C:\Users\Igor.Firsov\source\repos\ISBN-CHECK\ISBN-CHECK\obj\Debug\ISBN-CHECK.pdb
