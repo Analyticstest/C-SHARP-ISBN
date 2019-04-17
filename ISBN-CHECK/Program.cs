@@ -31,7 +31,7 @@ namespace ISBN_CHECK
             for (int i = 0; i < isbn.Length; i++)
             {
                 char currentChar = isbn[i];
-                if (isHyphon(currentChar)) // 45 = "-"
+                if (isHyphon(currentChar)) 
                 {
                     hyphonCounter++;
                 }
