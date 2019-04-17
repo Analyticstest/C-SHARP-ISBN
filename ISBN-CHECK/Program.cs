@@ -10,25 +10,24 @@ namespace ISBN_CHECK
     class Program
     {
 
-
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            setIsbnNumber();
-            numberAndLineChecker(setIsbnNumber());
-            isbnCalculation(setIsbnNumber());
-            isIsbn();
+            string isbnNumber = null;
+            setIsbnNumber(ref isbnNumber);
+            numberAndLineChecker(isbnNumber);
+            isbnCalculation(isbnNumber);
+            isIsbn(isbnNumber);
 
             Console.ReadLine();            
         }
-        static string setIsbnNumber()
+
+        static string setIsbnNumber(ref string isbnNumber)
         {
             Console.WriteLine("ISBN EINGEBEN: ");
-            string isbnNumber = Console.ReadLine();
+            isbnNumber = Console.ReadLine();
 
             return isbnNumber;
         }
-
-
 
         static bool numberAndLineChecker(string isbn)
         {
@@ -40,7 +39,7 @@ namespace ISBN_CHECK
                 {
                     lineCounter++;
                 }
-                else if (isbn[i] >= 48 & isbn[i] <= 57 || isbn[i] == 120 || isbn[i] == 88) // 120 = X;   88 = 
+                else if (isbn[i] >= 48 && isbn[i] <= 57 || isbn[i] == 120 || isbn[i] == 88) // 120 = X;   88 = 
                 {
                     numberCounter++;
                 }
@@ -53,10 +52,6 @@ namespace ISBN_CHECK
             return false;
         }
         
-
-
-
-
         static int isbnCalculation(string isbn)
         {
             int result = 0;
@@ -74,30 +69,20 @@ namespace ISBN_CHECK
                         isbnMultiplier--;
                     }
                 }
-                if(isbnMultiplier == 0)
-                {
-                    result = result % 11;
-                }
+
             }
-         
-            return result; 
+            return result%11; 
         }
 
-
-
-
-
-
-        static bool isIsbn()
+        static void isIsbn(string isbn)
         {
-            if (isbnCalculation(setIsbnNumber()) == 0) {
+            if (isbnCalculation(isbn) == 0 && numberAndLineChecker(isbn) ) {
                 Console.WriteLine("VALID ISBN");
             }
             else
             {
                 Console.WriteLine("INVALID ISBN");
-            }
-            return false;
+            } 
         }
     }
 }
