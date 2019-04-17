@@ -13,7 +13,7 @@ namespace ISBN_CHECK
         private static void Main(string[] args)
         {
             string isbnNumber = setIsbnNumber();
-            checkNumberAndDashes(isbnNumber);
+            checkNumbersAndHyphons(isbnNumber);
             isbnCalculation(isbnNumber);
             isValidIsbn(isbnNumber);
 
@@ -27,31 +27,32 @@ namespace ISBN_CHECK
             return isbnNumber;
         }
 
-        private static bool checkNumberAndDashes(string isbn)
+        private static bool checkNumbersAndHyphons(string isbn)
         {
-            int lineCounter = 0;
+            int hyphonCounter = 0;
             int numberCounter = 0;
+
             for (int i = 0; i < isbn.Length; i++)
             {
                 char currentChar = isbn[i];
-                if (isLine(currentChar)) // 45 = "-"
+                if (isHyphon(currentChar)) // 45 = "-"
                 {
-                    lineCounter++;
+                    hyphonCounter++;
                 }
                 else if (isNumber(isbn[i]) || isLetterX(isbn[i]))
                 {
                     numberCounter++;
                 }
             }
-
-            return lineCounter == 3 && numberCounter == 10;
+            return hyphonCounter == 3 && numberCounter == 10;
         }
         
         private static int isbnCalculation(string isbn)
         {
             int result = 0;
             int isbnMultiplier = 10;
-            if (checkNumberAndDashes(isbn))
+
+            if (checkNumbersAndHyphons(isbn))
             {
                 for (int i = 0; i < isbn.Length; i++) {
                     if (isNumber(isbn[i])) {
@@ -70,7 +71,7 @@ namespace ISBN_CHECK
 
         private static void isValidIsbn(string isbn)
         {
-            if (isbnCalculation(isbn) == 0 && checkNumberAndDashes(isbn)) 
+            if (isbnCalculation(isbn) == 0 && checkNumbersAndHyphons(isbn)) 
                 Console.WriteLine("VALID ISBN");
             else
                 Console.WriteLine("INVALID ISBN");
@@ -83,7 +84,7 @@ namespace ISBN_CHECK
         {
             return currentIsbnChar == 120 || currentIsbnChar == 88;
         }
-        private static bool isLine(char currentIsbnChar)
+        private static bool isHyphon(char currentIsbnChar)
         {
             return currentIsbnChar == 45;
         }
