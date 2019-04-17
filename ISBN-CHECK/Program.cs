@@ -14,32 +14,30 @@ namespace ISBN_CHECK
         {
             string isbnNumber = null;
             setIsbnNumber(ref isbnNumber);
-            numberAndLineChecker(isbnNumber);
+            checkNumberAndLines(isbnNumber);
             isbnCalculation(isbnNumber);
-            isIsbn(isbnNumber);
+            isValidIsbn(isbnNumber);
 
             Console.ReadLine();            
         }
 
-        static string setIsbnNumber(ref string isbnNumber)
+        private static void setIsbnNumber(ref string isbnNumber)
         {
             Console.WriteLine("ISBN EINGEBEN: ");
             isbnNumber = Console.ReadLine();
-
-            return isbnNumber;
         }
 
-        static bool numberAndLineChecker(string isbn)
+        static bool checkNumberAndLines(string isbn)
         {
             int lineCounter = 0;
             int numberCounter = 0;
             for (int i = 0; i < isbn.Length; i++)
             {
-                if (isbn[i] == 45) // 45 = "-"
+                if (isLine(isbn, i)) // 45 = "-"
                 {
                     lineCounter++;
                 }
-                else if (isbn[i] >= 48 && isbn[i] <= 57 || isbn[i] == 120 || isbn[i] == 88) // 120 = X;   88 = 
+                else if (isNumber(isbn, i) || isLetterX(isbn, i))
                 {
                     numberCounter++;
                 }
@@ -56,33 +54,54 @@ namespace ISBN_CHECK
         {
             int result = 0;
             int isbnMultiplier = 10;
-            if (numberAndLineChecker(isbn))
+            if (checkNumberAndLines(isbn))
             {
                 for(int i = 0; i < isbn.Length; i++) {
-                    if (isbn[i] >= 48 & isbn[i] <= 57) {                                                                                                            
+                    if (isNumber(isbn, i)) {                                                                                                            
                         result += (isbn[i]-48) * isbnMultiplier;
                         isbnMultiplier--;
                     }
-                    else if (isbn[i] == 120 || isbn[i] == 88)
+                    else if (isLetterX(isbn, i))
                     {
                         result += 10 * isbnMultiplier;
                         isbnMultiplier--;
                     }
                 }
-
             }
             return result%11; 
         }
 
-        static void isIsbn(string isbn)
+         static void isValidIsbn(string isbn)
         {
-            if (isbnCalculation(isbn) == 0 && numberAndLineChecker(isbn) ) {
+            if (isbnCalculation(isbn) == 0 && checkNumberAndLines(isbn) ) {
                 Console.WriteLine("VALID ISBN");
             }
             else
             {
                 Console.WriteLine("INVALID ISBN");
             } 
+        }
+        private static bool isNumber(string isbn, int i) { 
+            if (isbn[i] >= 48 && isbn[i] <= 57) 
+                return true;
+            else 
+                return false;
+        }
+        private static bool isLetterX(string isbn, int i)
+        {
+            if (isbn[i] == 120 || isbn[i] == 88)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        private static bool isLine(string isbn, int i)
+        {
+            if (isbn[i] == 45)
+                return true;
+            else
+                return false;
         }
     }
 }
