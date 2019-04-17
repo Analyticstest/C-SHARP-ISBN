@@ -7,101 +7,85 @@ using System.Threading.Tasks;
 
 namespace ISBN_CHECK
 {
-    class Program
-    {
 
+    class Isbn
+    {
         private static void Main(string[] args)
         {
-            string isbnNumber = null;
-            setIsbnNumber(ref isbnNumber);
-            checkNumberAndLines(isbnNumber);
+            string isbnNumber = setIsbnNumber();
+            checkNumberAndDashes(isbnNumber);
             isbnCalculation(isbnNumber);
             isValidIsbn(isbnNumber);
 
-            Console.ReadLine();            
+            Console.ReadLine();
         }
 
-        private static void setIsbnNumber(ref string isbnNumber)
+        private static string setIsbnNumber()
         {
             Console.WriteLine("ISBN EINGEBEN: ");
-            isbnNumber = Console.ReadLine();
+            var isbnNumber = Console.ReadLine();
+            return isbnNumber;
         }
 
-        static bool checkNumberAndLines(string isbn)
+        private static bool checkNumberAndDashes(string isbn)
         {
             int lineCounter = 0;
             int numberCounter = 0;
             for (int i = 0; i < isbn.Length; i++)
             {
-                if (isLine(isbn, i)) // 45 = "-"
+                char currentChar = isbn[i];
+                if (isLine(currentChar)) // 45 = "-"
                 {
                     lineCounter++;
                 }
-                else if (isNumber(isbn, i) || isLetterX(isbn, i))
+                else if (isNumber(isbn[i]) || isLetterX(isbn[i]))
                 {
                     numberCounter++;
                 }
             }
 
-            if (lineCounter == 3 & numberCounter == 10)
-            {
-                return true;
-            }
-            return false;
+            return lineCounter == 3 && numberCounter == 10;
         }
         
-        static int isbnCalculation(string isbn)
+        private static int isbnCalculation(string isbn)
         {
             int result = 0;
             int isbnMultiplier = 10;
-            if (checkNumberAndLines(isbn))
+            if (checkNumberAndDashes(isbn))
             {
-                for(int i = 0; i < isbn.Length; i++) {
-                    if (isNumber(isbn, i)) {                                                                                                            
-                        result += (isbn[i]-48) * isbnMultiplier;
+                for (int i = 0; i < isbn.Length; i++) {
+                    if (isNumber(isbn[i])) {
+                        result += (isbn[i] - 48) * isbnMultiplier;
                         isbnMultiplier--;
                     }
-                    else if (isLetterX(isbn, i))
+                    else if (isLetterX(isbn[i]))
                     {
                         result += 10 * isbnMultiplier;
                         isbnMultiplier--;
                     }
                 }
             }
-            return result%11; 
+            return result % 11; 
         }
 
-         static void isValidIsbn(string isbn)
+        private static void isValidIsbn(string isbn)
         {
-            if (isbnCalculation(isbn) == 0 && checkNumberAndLines(isbn) ) {
+            if (isbnCalculation(isbn) == 0 && checkNumberAndDashes(isbn)) 
                 Console.WriteLine("VALID ISBN");
-            }
             else
-            {
                 Console.WriteLine("INVALID ISBN");
-            } 
         }
-        private static bool isNumber(string isbn, int i) { 
-            if (isbn[i] >= 48 && isbn[i] <= 57) 
-                return true;
-            else 
-                return false;
+        private static bool isNumber(char currentIsbnChar) {
+            return currentIsbnChar >= 48 && currentIsbnChar <= 57;
+
         }
-        private static bool isLetterX(string isbn, int i)
+        private static bool isLetterX(char currentIsbnChar)
         {
-            if (isbn[i] == 120 || isbn[i] == 88)
-            {
-                return true;
-            }
-            else
-                return false;
+            return currentIsbnChar == 120 || currentIsbnChar == 88;
         }
-        private static bool isLine(string isbn, int i)
+        private static bool isLine(char currentIsbnChar)
         {
-            if (isbn[i] == 45)
-                return true;
-            else
-                return false;
+            return currentIsbnChar == 45;
         }
     }
 }
