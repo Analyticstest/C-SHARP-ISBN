@@ -6,19 +6,21 @@ namespace ISBN_CHECK
     {
         private static void Main(string[] args)
         {
-            string isbnNumber = setIsbnNumber();
 
+            bool isValid = false;
+            string isbnNumber = "";
             IsbnValidator isbnValidator = new IsbnValidator();
-            isbnValidator.isValidIsbn(isbnNumber);
+
+            do
+            {
+                isbnNumber = isbnValidator.setIsbnNumber(); 
+                isValid = isbnValidator.isValidIsbn(isbnNumber);
+            } while (!isValid);
 
             Console.ReadLine();
+
         }
 
-        private static string setIsbnNumber()
-        {
-            Console.WriteLine("ISBN EINGEBEN: ");
-            var isbnNumber = Console.ReadLine();
-            return isbnNumber;
-        }
+       
     }
 }

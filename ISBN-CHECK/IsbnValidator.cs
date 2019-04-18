@@ -8,7 +8,7 @@ namespace ISBN_CHECK
 {
     class IsbnValidator
     {
-        public  bool checkNumbersAndHyphons(string isbn)
+        private bool checkNumbersAndHyphons(string isbn)
         {
             int hyphonCounter = 0;
             int numberCounter = 0;
@@ -16,21 +16,20 @@ namespace ISBN_CHECK
             for (int i = 0; i < isbn.Length; i++)
             {
                 char currentChar = isbn[i];
+
                 if (isHyphon(currentChar))
                     hyphonCounter++;
-                else if (isNumber(isbn[i]) || isLetterX(isbn[i]))
+                else if (isNumber(currentChar) || isLetterX(currentChar))
                     numberCounter++;
             }
             return hyphonCounter == 3 && numberCounter == 10;
         }
 
-        public int isbnCalculation(string isbn)
+        private int isbnCalculation(string isbn)
         {
             int result = 0;
             int isbnMultiplier = 10;
 
-            if (checkNumbersAndHyphons(isbn))
-            {
                 for (int i = 0; i < isbn.Length; i++)
                 {
                     if (isNumber(isbn[i]))
@@ -44,17 +43,31 @@ namespace ISBN_CHECK
                         isbnMultiplier--;
                     }
                 }
-            }
             return result % 11;
         }
 
-        public void isValidIsbn(string isbn)
+        public bool isValidIsbn(string isbn)
         {
-            if (isbnCalculation(isbn) == 0 && checkNumbersAndHyphons(isbn))
-                Console.WriteLine("VALID ISBN");
+            if (checkNumbersAndHyphons(isbn) && isbnCalculation(isbn) == 0)
+            {
+                Console.WriteLine("\nVALID ISBN\n");
+                Console.WriteLine("Press enter to leave.");
+                return true;
+            }
             else
-                Console.WriteLine("INVALID ISBN");
+            {
+                Console.WriteLine("\nINVALID ISBN\n");
+                return false;
+            }
         }
+        public string setIsbnNumber()
+        {
+            Console.Write("ISBN EINGEBEN: ");
+            var isbnNumber = Console.ReadLine();
+            return isbnNumber;
+        }
+
+
         private static bool isNumber(char currentIsbnChar)
         {
             return currentIsbnChar >= 48 && currentIsbnChar <= 57;
@@ -68,6 +81,5 @@ namespace ISBN_CHECK
         {
             return currentIsbnChar == 45;
         }
-
     }
 }
