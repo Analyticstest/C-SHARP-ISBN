@@ -15,11 +15,11 @@ namespace ISBN_CHECK
 
             for (int i = 0; i < isbn.Length; i++)
             {
-                char currentChar = isbn[i];
+                char currentIsbnChar = isbn[i];
 
-                if (isHyphon(currentChar))
+                if (isHyphon(currentIsbnChar))
                     hyphonCounter++;
-                else if (isNumber(currentChar) || isLetterX(currentChar))
+                else if (isNumber(currentIsbnChar) || isLetterX(currentIsbnChar))
                     numberCounter++;
             }
             return hyphonCounter == 3 && numberCounter == 10;
