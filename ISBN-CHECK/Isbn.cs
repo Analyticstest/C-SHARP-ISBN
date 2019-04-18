@@ -6,7 +6,6 @@ namespace ISBN_CHECK
     {
         private static void Main(string[] args)
         {
-
             bool isValid = false;
             string isbnNumber = "";
             IsbnValidator isbnValidator = new IsbnValidator();
@@ -18,9 +17,6 @@ namespace ISBN_CHECK
             } while (!isValid);
 
             Console.ReadLine();
-
         }
-
-       
     }
 }
