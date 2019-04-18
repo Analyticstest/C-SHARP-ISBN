@@ -2,17 +2,14 @@
 
 namespace ISBN_CHECK
 {
-
     public class Isbn
     {
         private static void Main(string[] args)
         {
-            IsbnValidator isbn = new IsbnValidator();
             string isbnNumber = setIsbnNumber();
 
-            isbn.checkNumbersAndHyphons(isbnNumber);
-            isbn.isbnCalculation(isbnNumber);
-            isbn.isValidIsbn(isbnNumber);
+            IsbnValidator isbnValidator = new IsbnValidator();
+            isbnValidator.isValidIsbn(isbnNumber);
 
             Console.ReadLine();
         }
