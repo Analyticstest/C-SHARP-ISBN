@@ -6,49 +6,54 @@ using System.Threading.Tasks;
 
 namespace ISBN_CHECK
 {
-    class IsbnValidator
+    public class IsbnValidator
     {
-        private bool checkNumbersAndHyphons(string isbn)
+        private bool checkForNumbersAndHyphens(string isbn)
         {
-            int hyphonCounter = 0;
+            int hyphenCounter = 0;
             int numberCounter = 0;
 
             for (int i = 0; i < isbn.Length; i++)
             {
                 char currentIsbnChar = isbn[i];
+                
 
-                if (isHyphon(currentIsbnChar))
-                    hyphonCounter++;
+                if (i > 0 && isAdjacentHyphen(currentIsbnChar, isbn[i - 1])) 
+                {
+                    Console.WriteLine("\nTwo or more Hyphens are Adjacent");
+                    return false;
+                }
+                else if (isHyphen(currentIsbnChar))
+                    hyphenCounter++;
                 else if (isNumber(currentIsbnChar) || isLetterX(currentIsbnChar))
                     numberCounter++;
             }
-            return hyphonCounter == 3 && numberCounter == 10;
+
+            return hyphenCounter == 3 && numberCounter == 10;
         }
 
         private int isbnCalculation(string isbn)
         {
-            int result = 0;
-            int isbnMultiplier = 10;
+            int isbnMultiplier = 11;
+            var isbnNumbers = isbn
+                .Where(c => isNumber(c) || isLetterX(c)) // The letter X is treated as the Number 10 
+                .Select(c => {
+                    if (isNumber(c)) return c - 48;     // The Numbers are treated as Characters, so we have to Subtract 48 for it to become a true Number
+                    else return 10;
+                });
 
-                for (int i = 0; i < isbn.Length; i++)
-                {
-                    if (isNumber(isbn[i]))
-                    {
-                        result += (isbn[i] - 48) * isbnMultiplier;
-                        isbnMultiplier--;
-                    }
-                    else if (isLetterX(isbn[i]))
-                    {
-                        result += 10 * isbnMultiplier;
-                        isbnMultiplier--;
-                    }
-                }
-            return result % 11;
+            var aggregatedNumber = isbnNumbers.Sum(currentNumber =>
+            {
+                isbnMultiplier--;
+                return currentNumber * isbnMultiplier;
+            });
+
+            return aggregatedNumber % 11;
         }
 
         public bool isValidIsbn(string isbn)
         {
-            if (checkNumbersAndHyphons(isbn) && isbnCalculation(isbn) == 0)
+            if (checkForNumbersAndHyphens(isbn) && isbnCalculation(isbn) == 0)
             {
                 Console.WriteLine("\nVALID ISBN\n");
                 Console.WriteLine("Press enter to leave.");
@@ -70,16 +75,21 @@ namespace ISBN_CHECK
 
         private static bool isNumber(char currentIsbnChar)
         {
-            return currentIsbnChar >= 48 && currentIsbnChar <= 57;
+            return currentIsbnChar >= 48 && currentIsbnChar <= 57; 
 
         }
         private static bool isLetterX(char currentIsbnChar)
         {
-            return currentIsbnChar == 120 || currentIsbnChar == 88;
+            return currentIsbnChar == 120 || currentIsbnChar == 88; // 120 is the ASCII Character code for X  - 88 stands for x
         }
-        private static bool isHyphon(char currentIsbnChar)
+        private static bool isHyphen(char currentIsbnChar)
         {
             return currentIsbnChar == 45;
+        }
+        private static bool isAdjacentHyphen(char currentIsbnChar, char previousIsbnChar)
+        {
+
+            return currentIsbnChar == 45 && previousIsbnChar == 45; // 45 is the ASCII Character code for Hyphens
         }
     }
 }

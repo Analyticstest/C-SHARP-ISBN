@@ -12,3 +12,15 @@ C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\obj\Debug\ISBN-CHECK
 C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\obj\Debug\ISBN-CHECK.csproj.CoreCompileInputs.cache
 C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\obj\Debug\ISBN-CHECK.exe
 C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\obj\Debug\ISBN-CHECK.pdb
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\Shouldly.dll
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\xunit.abstractions.dll
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\xunit.assert.dll
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\xunit.core.dll
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\xunit.execution.desktop.dll
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\Shouldly.pdb
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\xunit.abstractions.xml
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\xunit.assert.xml
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\xunit.core.xml
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\xunit.execution.desktop.xml
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\obj\Debug\ISBN-CHECK.csproj.CopyComplete
+C:\Users\Igor.Firsov\Desktop\Projekte\ISBN-CHECK\ISBN-CHECK\bin\Debug\Microsoft.VisualStudio.CodeCoverage.Shim.dll
