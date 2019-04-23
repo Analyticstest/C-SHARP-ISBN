@@ -37,7 +37,7 @@ namespace ISBN_CHECK
             var isbnNumbers = isbn
                 .Where(c => isNumber(c) || isLetterX(c)) // The letter X is treated as the Number 10 
                 .Select(c => {
-                    if (isNumber(c)) return c - 48;     // The Numbers are treated as Characters, so we have to Subtract 48 for it to become a true Number
+                    if (isNumber(c)) return c - 48;     // The Numbers are treated as Characters, so we have to Subtract 48 for it to become an Decimal Number
                     else return 10;
                 });
 
@@ -78,16 +78,16 @@ namespace ISBN_CHECK
         }
         private static bool isLetterX(char currentIsbnChar)
         {
-            return currentIsbnChar == 120 || currentIsbnChar == 88; // 120 is the ASCII Character code for X  - 88 stands for x
+            return currentIsbnChar == 120 || currentIsbnChar == 88; // 120 is the ASCII Character Code for X  - 88 stands for x
         }
         private static bool isHyphen(char currentIsbnChar)
         {
-            return currentIsbnChar == 45;
+            return currentIsbnChar == 45; // 45 is the ASCII Character Code for Hyphens
         }
         private static bool isAdjacentHyphen(char currentIsbnChar, char previousIsbnChar)
         {
 
-            return currentIsbnChar == 45 && previousIsbnChar == 45; // 45 is the ASCII Character code for Hyphens
+            return currentIsbnChar == 45 && previousIsbnChar == 45; 
         }
     }
 }

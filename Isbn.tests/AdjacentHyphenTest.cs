@@ -9,9 +9,9 @@ namespace Isbn.tests
         public void isbnNumberShouldNotHaveTwoHyphensTest()
         {
             string isbn = "3-8266-2931--0";
-            var checker = new IsbnValidator();
+            var isbnValidator = new IsbnValidator();
 
-            Assert.False(checker.isValidIsbn(isbn));
+            Assert.False(isbnValidator.isValidIsbn(isbn));
         }
     }
 }

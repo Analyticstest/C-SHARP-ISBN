@@ -15,7 +15,6 @@ namespace ISBN_CHECK
                 isbnNumber = isbnValidator.setIsbnNumber(); 
                 isValid = isbnValidator.isValidIsbn(isbnNumber);
             } while (!isValid);
-
             Console.ReadLine();
         }
     }
