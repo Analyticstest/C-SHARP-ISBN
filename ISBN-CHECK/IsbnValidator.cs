@@ -17,7 +17,6 @@ namespace ISBN_CHECK
             {
                 char currentIsbnChar = isbn[i];
                 
-
                 if (i > 0 && isAdjacentHyphen(currentIsbnChar, isbn[i - 1])) 
                 {
                     Console.WriteLine("\nTwo or more Hyphens are Adjacent");
@@ -71,7 +70,6 @@ namespace ISBN_CHECK
             var isbnNumber = Console.ReadLine();
             return isbnNumber;
         }
-
 
         private static bool isNumber(char currentIsbnChar)
         {
