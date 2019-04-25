@@ -1,13 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ISBN_CHECK
 {
     public class IsbnValidator
     {
+        public string setIsbnNumber()
+        {
+            Console.Write("ISBN EINGEBEN: ");
+            var isbnNumber = Console.ReadLine();
+            return isbnNumber;
+        }
+        public bool isValidIsbn(string isbn)
+        {
+            if (checkForNumbersAndHyphens(isbn) && isbnCalculation(isbn) == 0)
+            {
+                Console.WriteLine("\nVALID ISBN\n");
+                Console.WriteLine("Press enter to leave.");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("\nINVALID ISBN\n");
+                return false;
+            }
+        }
         private bool checkForNumbersAndHyphens(string isbn)
         {
             int hyphenCounter = 0;
@@ -30,7 +48,6 @@ namespace ISBN_CHECK
 
             return hyphenCounter == 3 && numberCounter == 10;
         }
-
         private int isbnCalculation(string isbn)
         {
             int isbnMultiplier = 11;
@@ -49,32 +66,10 @@ namespace ISBN_CHECK
 
             return aggregatedNumber % 11;
         }
-
-        public bool isValidIsbn(string isbn)
-        {
-            if (checkForNumbersAndHyphens(isbn) && isbnCalculation(isbn) == 0)
-            {
-                Console.WriteLine("\nVALID ISBN\n");
-                Console.WriteLine("Press enter to leave.");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("\nINVALID ISBN\n");
-                return false;
-            }
-        }
-        public string setIsbnNumber()
-        {
-            Console.Write("ISBN EINGEBEN: ");
-            var isbnNumber = Console.ReadLine();
-            return isbnNumber;
-        }
-
+        
         private static bool isNumber(char currentIsbnChar)
         {
             return currentIsbnChar >= 48 && currentIsbnChar <= 57; 
-
         }
         private static bool isLetterX(char currentIsbnChar)
         {
@@ -86,7 +81,6 @@ namespace ISBN_CHECK
         }
         private static bool isAdjacentHyphen(char currentIsbnChar, char previousIsbnChar)
         {
-
             return currentIsbnChar == 45 && previousIsbnChar == 45; 
         }
     }

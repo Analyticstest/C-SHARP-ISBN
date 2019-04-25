@@ -1,0 +1,94 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Igor.Firsov\\Desktop\\Projekte\\ISBN-CHECK\\Isbn.tests\\ISBN.tests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Igor.Firsov\\Desktop\\Projekte\\ISBN-CHECK\\ISBN-CHECK\\ISBN-CHECK.BL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Igor.Firsov\\Desktop\\Projekte\\ISBN-CHECK\\ISBN-CHECK\\ISBN-CHECK.BL.csproj",
+        "projectName": "ISBN-CHECK.BL",
+        "projectPath": "C:\\Users\\Igor.Firsov\\Desktop\\Projekte\\ISBN-CHECK\\ISBN-CHECK\\ISBN-CHECK.BL.csproj"
+      },
+      "frameworks": {
+        "net461": {}
+      }
+    },
+    "C:\\Users\\Igor.Firsov\\Desktop\\Projekte\\ISBN-CHECK\\Isbn.tests\\ISBN.tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Igor.Firsov\\Desktop\\Projekte\\ISBN-CHECK\\Isbn.tests\\ISBN.tests.csproj",
+        "projectName": "ISBN.tests",
+        "projectPath": "C:\\Users\\Igor.Firsov\\Desktop\\Projekte\\ISBN-CHECK\\Isbn.tests\\ISBN.tests.csproj",
+        "packagesPath": "C:\\Users\\Igor.Firsov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Igor.Firsov\\Desktop\\Projekte\\ISBN-CHECK\\Isbn.tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Igor.Firsov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "C:\\Users\\Igor.Firsov\\Desktop\\Projekte\\ISBN-CHECK\\ISBN-CHECK\\ISBN-CHECK.BL.csproj": {
+                "projectPath": "C:\\Users\\Igor.Firsov\\Desktop\\Projekte\\ISBN-CHECK\\ISBN-CHECK\\ISBN-CHECK.BL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.0.1, )"
+            },
+            "Microsoft.NETCore.App": {
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.console": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.1, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
